@@ -4,7 +4,7 @@ project = "tools"
 # Built on the server from the Dockerfile at the repository's root.
 build = "."
 port = 8000
-domains = ["flow.dev.podos.org"]        # put your domain here; tls is "auto" (Let's Encrypt) by default
+domains = ["flow1124.dev.podos.org"]        # put your domain here; tls is "auto" (Let's Encrypt) by default
 
 # The two directories docker-compose.yaml keeps: the databases and the flows.
 volumes = { databases = "/www/.src/databases", flowstream = "/www/.src/flowstream" }
