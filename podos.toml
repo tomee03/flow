@@ -1,0 +1,20 @@
+project = "tools"
+
+[service.flow]
+# Built on the server from the Dockerfile at the repository's root.
+build = "."
+port = 8000
+domains = ["flow.dev.podos.org"]        # put your domain here; tls is "auto" (Let's Encrypt) by default
+
+# The two directories docker-compose.yaml keeps: the databases and the flows.
+volumes = { databases = "/www/.src/databases", flowstream = "/www/.src/flowstream" }
+
+# One replica that owns its files: the old container stops before the new one starts.
+stateful = true
+
+# The image's command runs `npm i` before `npm start`, so the first answer can take a while.
+# A TCP check: I did not verify which status "/" answers before login.
+health = { type = "tcp", interval = "10s", start_period = "2m" }
+
+# Node plus one forked process per flow (flowstream_worker = fork in `config`).
+resources = { memory = "768M", memory_request = "256M" }
