@@ -15,6 +15,5 @@ COPY /--bundles--/bookmarks.bundle ./bundles/
 
 RUN npm install
 EXPOSE 8000
-
 ENTRYPOINT ["/sbin/tini", "--"]
 CMD [ "/bin/bash", "-c", "mkdir -p logs; npm i; npm start 2>&1 | tee logs/debug.log" ]
