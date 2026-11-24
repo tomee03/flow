@@ -17,4 +17,4 @@ stateful = true
 health = { type = "tcp", interval = "10s", start_period = "2m" }
 
 # Node plus one forked process per flow (flowstream_worker = fork in `config`).
-resources = { memory = "768M", memory_request = "256M" }
+#resources = { memory = "768M", memory_request = "256M" }
